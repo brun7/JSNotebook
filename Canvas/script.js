@@ -1,42 +1,54 @@
+/// Creating the 2D Canvas
 let canvas = document.querySelector("#canvas");
 let ctx = canvas.getContext("2d");
 
-const colors = ["red", "green", "blue", "orange", "yellow", "cyan"];
+let width = canvas.width;
+let height = canvas.height;
+let opacity = 1;
 
-// let xPos = 20;
-// colors.forEach((color, index) => {
-//   console.log(color, index);
-//   setTimeout(() => {
-//     ctx.fillStyle = color;
-//     ctx.fillRect(xPos, 10, 20, 20);
-//     xPos += 20;
-//   }, index * 2000);
-// });
+let red = 0;
+let green = 0;
+let blue = 0;
 
-// ctx.lineWidth = 2;
-// ctx.strokeStyle = "red";
-// ctx.strokeRect(10, 10, 200, 100);
+function drawCircle(x, y) {
+  ctx.fillStyle = `rgba(${red},${green},${blue},${opacity})`;
+  ctx.beginPath();
+  ctx.arc(x, y, 10, 0, Math.PI * 2, false);
+  ctx.fill();
+}
 
-// ctx.strokeStyle = "orange";
-// ctx.strokeRect(20, 20, 180, 80);
+canvas.addEventListener("click", (e) => {
+  drawCircle(e.offsetX, e.offsetY);
+});
 
-// ctx.strokeStyle = "yellow";
-// ctx.strokeRect(30, 30, 160, 60);
+let clearBtn = document.querySelector("#clear");
+clearBtn.addEventListener("click", () => {
+  ctx.clearRect(0, 0, 300, 300);
+});
 
-// ctx.strokeStyle = "green";
-// ctx.strokeRect(40, 40, 140, 40);
+let opacitySlider = document.querySelector("#opacity");
+opacitySlider.addEventListener("input", (e) => {
+  opacity = e.target.value;
+});
 
-// ctx.strokeStyle = "blue";
-// ctx.strokeRect(50, 50, 120, 20);
+let redValue = document.getElementById("redValue");
+let greenValue = document.getElementById("greenValue");
+let blueValue = document.getElementById("blueValue");
 
-let xPos = 0;
-let yPos = 0;
-let width = 220;
-let height = 120;
-const strokeColors = ["red", "orange", "yellow", "green", "blue"];
+let redSlider = document.querySelector("#red");
+redSlider.addEventListener("input", (e) => {
+  red = e.target.value;
+  redValue.textContent = red;
+});
 
-ctx.lineWidth = 2;
-strokeColors.forEach((color) => {
-  ctx.strokeStyle = color;
-  ctx.strokeRect(xPos+=10, yPos+=10, width-=20, height-=20);
+let greenSlider = document.querySelector("#green");
+greenSlider.addEventListener("input", (e) => {
+  green = e.target.value;
+  greenValue.textContent = green;
+});
+
+let blueSlider = document.querySelector("#blue");
+blueSlider.addEventListener("input", (e) => {
+  blue = e.target.value;
+  blueValue.textContent = blue;
 });
