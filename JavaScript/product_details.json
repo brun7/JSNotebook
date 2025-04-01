@@ -1,0 +1,11 @@
+{
+  "brand": "Acer",
+  "product_name": "Acer Nitro 5",
+  "price": 999.99,
+  "specs": {
+    "processor": "Intel Core i7",
+    "ram": "16GB",
+    "storage": "512GB SSD",
+    "graphics": "NVIDIA RTX 3060"
+  }
+}
